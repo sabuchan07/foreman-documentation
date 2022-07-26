@@ -19,6 +19,7 @@ The preview icon lists the targeted hosts.
 . The remaining settings depend on the selected job template.
 See {ManagingHostsDocURL}creating-a-job-template_managing-hosts[Creating a Job Template] for information on adding custom parameters to a template.
 . Optional: To configure advanced settings for the job, click *Display advanced fields*.
+
 Some of the advanced settings depend on the job template, the following settings are general:
 
 * *Effective user* defines the user for executing the job, by default it is the Script user.
