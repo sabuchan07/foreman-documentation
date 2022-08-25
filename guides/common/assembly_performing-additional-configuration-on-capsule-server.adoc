@@ -24,6 +24,9 @@ endif::[]
 // Enabling Power Management on Managed Hosts
 include::modules/proc_enabling-power-management-on-managed-hosts.adoc[leveloffset=+1]
 
+//Enabling Pull-based Transport
+include::modules/proc_enabling-pull-based-transport.adoc[leveloffset=+1]
+
 // Configuring DNS, DHCP, and TFTP on {SmartProxyServer}
 include::modules/proc_configuring-dns-dhcp-and-tftp.adoc[leveloffset=+1]
 

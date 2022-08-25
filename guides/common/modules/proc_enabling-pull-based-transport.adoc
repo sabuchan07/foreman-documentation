@@ -1,0 +1,35 @@
+[id="enabling-pull-based-tranport_{context}"]
+= Enabling Pull-based Transport
+
+.Procedure
+If your {Project} or {SmartProxy} is preinstalled, enable the pull provider using:
+ifdef::satellite[]
+`satellite-installer --foreman-proxy-plugin-remote-execution-script-mode=pull-mqtt`
+endif::[]
+`foreman-installer --foreman-proxy-plugin-remote-execution-script-mode=pull-mqtt`.
+
+You may additionally need to run `--foreman-proxy-templates=true --foreman-proxy-registration=true` to enable the {SmartProxy} for host registration.
+
+When the installer command succeeds, the MQTT broker runs at Port 1883.
+You must allow that port in your firewall by running the following commands:
+
+. `firewall-cmd --add-port="1883/tcp"`
+. `firewall-cmd --runtime-to-permanent`
+
+Choose one of three options to enable hosts to work with MQTT for pull provider:
+
+* Migrate existing clients to pull provider
+
+ifdef::satellite[]
+If your client is already registered to {Project}, you can convert the client to the pull-based transport if the client has access to the {Project} Client repository.
+
+Do this by following these steps:
+.Install the conversion tool by running `yum install katello-pull-transport-migrate`, which installs `foreman_ygg_worker` and `yggdrasil` as dependencies and performs the conversion.
+.To verify the installation was successful, run `ygdrassil status` and execute a remote execution job against the host using the script provider job.
+endif::[]
+
+* Register clients to pull the provider {SmartProxy}:
+In the *Hosts* > *Register host* > *Advanced* tab, if the *REX pull mode* is set to *Yes*, the pull provider client is set up during host registration.
+
+* Provision clients to connect to pull provider:
+If you set the `enable-remote-execute-pull’ parameter to `true`, the pull provider client is set up during host registration.
